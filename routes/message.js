@@ -14,9 +14,9 @@ const client = new Wit({
 /* GET Message. */
 router.get("/", function(req, res, next) {
   client
-    .message("what is the weather in London?", {})
+    .message("옆으로 움직이는 함수 보여줘", {})
     .then(data => {
-      console.log("Yay, got Wit.ai response: " + data);
+      // console.log("Yay, got Wit.ai response: " + data);
       handleWitData(data);
       res.render("message", { title: data });
     })
