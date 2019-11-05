@@ -21,17 +21,15 @@ router.post("/", function(req, res, next) {
     .message(clientMsg, {})
     .then(data => {
       let aiMsg = handleIntent(data.entities);
-      // console.log(data.intent, "data.intent");
-      // let aiMsg = handleWitData(data);
-      // console.log(aiMsg, "aiMsg");
-      if (Array.isArray(aiMsg)) {
-        let msg = "";
-
-        aiMsg.map = value => {
-          msg += `{${value} \n}`;
-        };
-        aiMsg = msg;
-      }
+      console.log(aiMsg, "aiMsg");
+      // if (Array.isArray(aiMsg)) {
+      //   aiMsg = aiMsg.map(value => {
+      //     `${value}`.join(" ");
+      //   });
+      //   // aiMsg = msg;
+      //   // console.log(answers, "answers after map in array");
+      // }
+      console.log(aiMsg, "aiMsg after map");
       res.render("message", { msg: aiMsg });
     })
     .catch(console.error);

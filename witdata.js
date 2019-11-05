@@ -1,4 +1,4 @@
-const { api } = require("./chatbot/apiLibrary");
+// const { api } = require("./chatbot/apiLibrary");
 
 let intentType = {
   function_motion: function(data) {
