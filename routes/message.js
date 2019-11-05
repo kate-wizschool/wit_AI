@@ -3,7 +3,7 @@ var router = express.Router();
 const { Wit, log } = require("node-wit");
 
 const handleWitData = require("../witdata").handleWitData;
-const handleRequest = require("../intentRequest").handleRequest;
+const handleRequest = require("../chatbot/intentRequest").handleRequest;
 
 const REQUEST = "request";
 const GREETING = "greeting";
@@ -45,16 +45,15 @@ checkConfidence = confidence => {
 };
 
 handleIntent = entities => {
-  // console.log(entities, "entities");
   //entity 아예 없을때
   if (Object.keys(entities).length === 0) {
-    // console.log("!!!!!!!!!entities");
+    console.log("!!!!!!!!!entities");
     return "좀 더 자세히 말해줘  \n entities 없음";
   }
   // intent 없을때
   if (!entities.hasOwnProperty("intent")) {
     console.log("entities 없음");
-    return "좀 더 자세히 말해줘  \n entities 없음";
+    return "좀 더 자세히 말해줘  \n intent 없음";
   } else {
     // intent confidence 체크
     if (!checkConfidence(entities.intent[0].confidence)) {
@@ -62,12 +61,10 @@ handleIntent = entities => {
         Object.keys(entities).length,
         entities.intent[0].confidence,
         checkConfidence(entities.intent[0].confidence),
-        "intent 없거나  confidence 낮음 "
+        " confidence 낮음 "
       );
-
-      return "좀 더 자세히 말해줘  \n intent 없거나  confidence 낮음 ";
+      return "좀 더 자세히 말해줘  \n  confidence 낮음 ";
     } else {
-      // console.log("intent[0].value", intent[0].value);
       switch (entities.intent[0].value) {
         case REQUEST:
           return handleRequest(entities);
