@@ -99,7 +99,7 @@ const wizapi = {
     desc: `setDraggable()는 스프라이트를 드래그 가능하도록 설정해주는 함수야.`,
     script: `// 스프라이트를 드래그 가능하도록 바꿔주었어.\n// 만약 true 대신 false가 들어간다면 드래그를 못하게 바뀌겠지.\nsetDraggable(true)`
   },
-  onframe: {
+  onFrame: {
     name: "onFrame(function())",
     desc: `onFrame(function())는 스프라이트를 드래그 가능하도록 설정해주는 함수야.`,
     script: `// 스프라이트를 드래그 가능하도록 바꿔주었어.\n// 만약 true 대신 false가 들어간다면 드래그를 못하게 바뀌겠지.\nsetDraggable(true)`
